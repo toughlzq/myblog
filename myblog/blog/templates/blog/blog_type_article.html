@@ -1,0 +1,11 @@
+{% extends 'blog/blog_list.html' %}
+{% load staticfiles %}
+{% block title %}
+    {{ type_name }}
+{% endblock %}
+{% block header %}
+    <link rel="stylesheet" href="">
+{% endblock %}
+{% block blog_title_name %}
+    博客类型：{{ type_name }} (一共有{{ blogs|length }}条博客)
+{% endblock %}

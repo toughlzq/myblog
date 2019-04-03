@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+     <div class="container">
+        <div class="row">
+            <div class="col-xs-8 col-xs-offset-2">
+             {% if user.is_authenticated%}
+                <h3>{{ user.username }}</h3>
+                <ul>
+                    <li>昵称：{{ user.get_nickname }} &nbsp&nbsp<a href="{% url 'changenickname' %}?form={{ request.get_full_path }}">修改昵称</a></li>
+                    <li>邮箱：{% if user.email  %} {{ user.email }}{% else %}未绑定{% endif %}<a href="{% url 'bindemail' %}?from={{request.get_full_path  }} ">绑定新邮箱</a></li>
+                    <li>上一次登录：{{ user.last_login|date:'Y-m-d  H-i-s' }}</li>
+                    <li><a href="">修改密码</a></li>
+                </ul>
+             {% else %}
+                 <span>未登录，请先登陆</span>
+                 <script type="text/javascript">
+                    window.location.href='/';
+                 </script>
+            {% endif %}
+            </div>
+        </div>
+     </div>
+{% endblock %}
+{% block script_extends %}
+{% endblock %}
+<style type="text/css">
+    div.nav a{
+        text-decoration: none;
+    }
+    div.nav a.logo{
+        display: inline-block;
+    }
+</style>
+</body>
+</html>

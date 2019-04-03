@@ -1,0 +1,8 @@
+{% extends 'blog/blog_list.html' %}
+{% load staticfiles %}
+{% block header %}
+    <link rel="stylesheet" href="blog/blog.css">
+{% endblock %}
+{% block blog_title_name %}
+    博客时间：{{  blog_with_date}} (一共有{{ blogs|length }}条博客)
+{% endblock %}

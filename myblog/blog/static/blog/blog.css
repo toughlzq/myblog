@@ -1,0 +1,45 @@
+ ul{
+     list-style-type: none;
+}
+
+ul.blog-info-descrption li{
+    display: inline-block;
+}
+div.comment-area{
+    margin-top: 3em;
+}
+h3.comment-area-title{
+    border-bottom: 1px solid #ccc;
+}
+div.django-ckeditor-widget{
+    width: 100%;
+}
+div.comment{
+ border-bottom:1px dashed #ccc;
+    margin-bottom: 0.5em;
+    padding: 0.5em;
+}
+div.reply{
+    margin-left: 2em;
+}
+div#reply_content_container{
+    border: 1px solid #d1d1d1;
+    border-bottom: none;
+    background-color: #f8f8f8;
+    overflow: hidden;
+    padding: 1em 1em 0.5em;
+}
+div.reply-title{
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 0.5em;
+}
+div.like{
+    color:#337ab7;
+    cusor:pointer;
+    display:inline-block;
+    padding: 0.5em 0.3em
+;
+}
+div.like .active{
+    color: #f22;
+}

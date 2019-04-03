@@ -1,0 +1,50 @@
+{% extends 'user/form.html' %}
+{% load staticfiles %}
+{% block other_submit %}
+<button class=" btn btn-primary"   id="ver_submit">发送验证码<button>
+{% endblock %}
+{% block script_extends %}
+<script type="text/javascript">
+    $("#ver_submit").click(function () {
+        var email=$("#id_email").val();
+        if (email==''){
+            $("#error_tip").text('邮箱不能为空');
+            return false;
+        }
+        $.ajax({
+            url:"{% url 'send_email' %}",
+            type:'GET',
+            cache:false,
+            data:{
+                email:email
+            },
+            success:function () {
+                if (data['status']=='ERROR')
+                console.log()
+            },
+            error:function (xhr) {
+                console.log(xhr)
+            }
+        })
+        $(this).addClass('disabled');
+        $(this).attr('disabled',true);
+        var time=30;
+        $(this).text(time+'s');
+        var interval=setInterval(()=>{
+            if (time ==0){
+                $(this).removeClass('disabled');
+                $(this).attr('disabled',false);
+                clearInterval(interval);
+                $(this).text('发送验证码');
+                return false;
+            }
+            time-=1;
+            $(this).text(time+'s');
+        },1000)
+    })
+
+
+</script>
+
+{% endblock %}
+
